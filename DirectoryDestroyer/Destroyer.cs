@@ -56,23 +56,26 @@ namespace DD
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
                         DeleteFiles(new DirectoryInfo(Path.GetFullPath(directoryPath)));
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch(Exception pathExcpt)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Path error! {pathExcpt.Message}");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
             }
             else if(File.Exists(directoriesPaths) && new FileInfo(directoriesPaths).Length != 0)
             {
                 string[] paths = File.ReadAllLines(directoriesPaths);
-                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Directories to delete:");
-                Console.ForegroundColor = ConsoleColor.White;
-                foreach(string path in paths)
+                Console.ForegroundColor = ConsoleColor.Green;
+                foreach (string path in paths)
                 {
                     Console.WriteLine(path);
                 }
+                Console.ForegroundColor = ConsoleColor.White;
                 ConsoleKey response;
                 do
                 {
@@ -91,10 +94,13 @@ namespace DD
                         {
                             DeleteFiles(new DirectoryInfo(Path.GetFullPath(path)));
                         }
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                     catch (Exception pathExcpt)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"Path error! {pathExcpt.Message}");
+                        Console.ForegroundColor = ConsoleColor.White;
                     }
                 }
 
